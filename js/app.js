@@ -10,6 +10,20 @@ const loadPhones = async(searchText) => {
 const displayPhones = phones =>{
     const phonesContainer = document.getElementById('phones-container');
     phonesContainer. textContent = '';
+
+    // Display 20 phones only
+    phones = phones. slice(0, 10);
+
+    // Display not found phones
+    const noPhone = document. getElementById("not-found-msg")
+    if(phones. length === 0){
+        noPhone. classList. remove('d-none');
+    }
+    else{
+        noPhone. classList. add('d-none');
+    }
+
+    // Display all phones
     phones.forEach(phone => {
         const phoneDiv =  document. createElement('div');
         phoneDiv. classList. add('col');
@@ -33,4 +47,4 @@ document. getElementById('btn-search'). addEventListener('click', function(){
     loadPhones(searchText);
 })
 
-loadPhones();
+// loadPhones();
